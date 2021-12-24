@@ -1,0 +1,6 @@
+{
+    "access_token": "BQAlCrwb7hMh07vx50xbN8UanovgPl2TFUbkiJqFwcLP-MEzNIfycRJVLwst1kBJNMf_ECMr8e6ZCs7ObBySaS2S",
+    "token_type": "Bearer",
+    "expires_in": 3600,
+    "scope": "user-read-recently-played"
+}

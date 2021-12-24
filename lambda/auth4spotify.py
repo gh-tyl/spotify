@@ -1,7 +1,7 @@
-import environ
-import spotipy
-import spotipy.util as util
-from spotipy.oauth2 import SpotifyClientCredentials
+from environ import environ
+from spotipy import spotipy
+from spotipy import spotipy.util as util
+from spotipy.spotipy.oauth2 import SpotifyClientCredentials
 
 class Auth:
     def __init__(self):
