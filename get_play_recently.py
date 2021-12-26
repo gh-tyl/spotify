@@ -3,7 +3,7 @@ import os
 import json
 import datetime
 # import pandas as pd
-import auth4spotify
+import auth_spotify
 
 def main():
     # record time for filename
