@@ -1,3 +1,5 @@
+import base64
+
 import environ
 import requests
 
@@ -12,37 +14,18 @@ class Auth:
             self.env("CLIENT_SECRET"),
             self.env("SCOPE"),
         )
-        self.auth_endpoint, self.redirect_uri = (
-            self.env("AUTH_ENDPOINT"),
-            self.env("REDIRECT_URI"),
-        )
+        self.redirect_uri = self.env("REDIRECT_URI")
 
     def accessToken(self):
-        # headers = {'Authorization':f'Basic <base64 encoded {self.client_id}:{self.client_secret}>', 'Content-Type':'application/x-www-form-urlencoded'}
-        # params = {'scope':self.scope, 'grant_type': 'client_credentials'}
-        params = {
-            "grant_type": "client_credentials",
-            "client_id": self.client_id,
-            "client_secret": self.client_secret,
-            "scope": self.scope,
-        }
-        auth_response = requests.post(
-            self.auth_endpoint,
-            {
-                "grant_type": "client_credentials",
-                "client_id": self.client_id,
-                "client_secret": self.client_secret,
-                "scope": self.scope,
-            },
-        )
-        # auth_response = requests.post(
-        #     url=self.auth_endpoint,
-        #     # headers=headers,
-        #     params=params,
-        #     # redirect_uri=self.redirect_uri
-        #     )
-        access_token = auth_response.json
-        print(access_token)
+        url = "https://accounts.spotify.com/api/token"
+        headers = {}
+        data = {}
+        message = f"{self.client_id}:{self.client_secret}"
+        base64Bytes = base64.b64encode(message.encode())
+        headers["Authorization"] = f"Basic {base64Bytes.decode()}"
+        data["grant_type"] = "client_credentials"
+        auth_response = requests.post(url, headers=headers, data=data)
+        access_token = auth_response.json()["access_token"]
         return access_token
 
 
