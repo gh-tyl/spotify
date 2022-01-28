@@ -1,4 +1,4 @@
-#!/home/ubuntu/spotify/.venv/bin/python3
+#!/home/ubuntu/spotify/.venv/bin/python
 import datetime
 import json
 import os
