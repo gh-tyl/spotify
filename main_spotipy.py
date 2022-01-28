@@ -1,6 +1,7 @@
 import datetime
 import json
 import os
+from time import time
 
 import auth_spotipy
 
@@ -33,4 +34,6 @@ def main(event=False, context=False):
 
 
 if __name__ == "__main__":
-    main()
+    while True:
+        main()
+        time
