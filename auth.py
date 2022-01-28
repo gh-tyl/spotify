@@ -2,7 +2,6 @@ import base64
 
 import environ
 import requests
-from requests.models import Response
 
 
 class Auth:
