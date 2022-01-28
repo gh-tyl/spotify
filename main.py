@@ -1,6 +1,7 @@
 import datetime
 import json
 import os
+import time
 
 import environ
 import requests
@@ -50,7 +51,13 @@ class GetRecentlyPlayedTracks:
 
 
 if __name__ == "__main__":
-    grpt = GetRecentlyPlayedTracks()
-    res = grpt.get_recently_played_tracks()
-    grpt.save_json(res)
-    # print(res)
+    try:
+        while True:
+            grpt = GetRecentlyPlayedTracks()
+            res = grpt.get_recently_played_tracks()
+            grpt.save_json(res)
+            time.sleep(10000)
+            # print(res)
+
+    except KeyboardInterrupt:
+        print("----DONE----")
