@@ -16,6 +16,7 @@ class Auth:
         )
         self.redirect_uri = self.env("REDIRECT_URI")
         self.scope = self.env("GRPT_SCOPE")
+        # self.scope = 'user-read-recently-played'
 
     def accessToken(self):
         url = "https://accounts.spotify.com/api/token"
@@ -29,12 +30,13 @@ class Auth:
         # data["client_secret"] = self.client_secret
         data["grant_type"] = "client_credentials"
         # data["response_type"] = "code"
-        data["response_type"] = "token"
+        # data["response_type"] = "token"
         data["redirect_uri"] = self.redirect_uri
         data["scope"] = self.scope
         auth_response = requests.post(url, headers=headers, data=data)
         print("----------------------------------------")
         print(auth_response.json())
+        print(auth_response.json()["access_token"])
         print("----------------------------------------")
         access_token = auth_response.json()["access_token"]
         return access_token
