@@ -20,7 +20,7 @@ class GetRecentlyPlayedTracks:
         self.access_token = self.env("ACCESS_TOKEN")
 
     def get_recently_played_tracks(self):
-        access_token = self.auth.accessToken()
+        # access_token = self.auth.accessToken()
         headers = {
             "Accept": "application/json",
             "Content-Type": "application/json",
@@ -46,7 +46,8 @@ class GetRecentlyPlayedTracks:
                 os.makedirs(idir_path)
                 print(f"Error is {e}")
         json_path = f"{idir_path}/{time_list[0]}{time_list[1]}{time_list[2]}{time_list[3]}_recently.json"
-        with open(json_path, "w", encoding="utf-8") as f:
+        # with open(json_path, "w", encoding="utf-8") as f:
+        with open(json_path, "w") as f:
             f.write(json.dumps(res))
         print("path is", json_path)
 
