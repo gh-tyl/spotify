@@ -34,10 +34,10 @@ class Auth:
         data["redirect_uri"] = self.redirect_uri
         data["scope"] = self.scope
         auth_response = requests.post(url, headers=headers, data=data)
-        print("----------------------------------------")
-        print(auth_response.json())
-        print(auth_response.json()["access_token"])
-        print("----------------------------------------")
+        # print("----------------------------------------")
+        # print(auth_response.json())
+        # print(auth_response.json()["access_token"])
+        # print("----------------------------------------")
         access_token = auth_response.json()["access_token"]
         return access_token
 
