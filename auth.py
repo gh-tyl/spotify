@@ -24,12 +24,12 @@ class Auth:
         message = f"{self.client_id}:{self.client_secret}"
         base64Bytes = base64.b64encode(message.encode())
         headers["Authorization"] = f"Basic {base64Bytes.decode()}"
-        # data["username"] = self.username
-        # data["client_id"] = self.client_id
-        # data["client_secret"] = self.client_secret
+        data["username"] = self.username
+        data["client_id"] = self.client_id
+        data["client_secret"] = self.client_secret
         data["grant_type"] = "client_credentials"
         # data["response_type"] = "code"
-        # data["response_type"] = "token"
+        data["response_type"] = "token"
         data["redirect_uri"] = self.redirect_uri
         data["scope"] = self.scope
         auth_response = requests.post(url, headers=headers, data=data)
